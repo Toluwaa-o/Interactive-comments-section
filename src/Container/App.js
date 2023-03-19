@@ -248,26 +248,28 @@ changeHandler = (event) => {
 }
 
     render() {
-        const Page = this.state.comments ? <Tweets change={this.changeHandler} delete={this.deleteReply} add={this.increaseScore} sub={this.decreaseScore} comments={this.state.comments} send={this.addReply} user={this.state.currentUser} /> : <p>Loading</p>
+        const Page = this.state.comments ? <div className='fullPage'>
+        <Tweets change={this.changeHandler} delete={this.deleteReply} add={this.increaseScore} sub={this.decreaseScore} comments={this.state.comments} send={this.addReply} user={this.state.currentUser} />
+        <ReplySection 
+        avatar={this.state.currentUser ? this.state.currentUser.image.png : null}
+        type='Send' 
+        show={true}
+        class='textA'
+        send={this.newTweet}
+        name={this.state.currentUser ? this.state.currentUser.username : null}
+        img={this.state.currentUser ? this.state.currentUser.image.png : null}
+        />
+        {this.state.shouldDelete ? <div>
+            <Cover no={this.deleteReply} />
+            <Confirmation no={this.deleteReply} delete={this.deleteYes} />
+        </div> : null}
+        <Footer />
+    </div> : <div className="loader"></div>
+
+        
 
         return (
-            <div className='fullPage'>
-                {Page}
-                <ReplySection 
-                avatar={this.state.currentUser ? this.state.currentUser.image.png : null}
-                type='Send' 
-                show={true}
-                class='textA'
-                send={this.newTweet}
-                name={this.state.currentUser ? this.state.currentUser.username : null}
-                img={this.state.currentUser ? this.state.currentUser.image.png : null}
-                />
-                {this.state.shouldDelete ? <div>
-                    <Cover no={this.deleteReply} />
-                    <Confirmation no={this.deleteReply} delete={this.deleteYes} />
-                </div> : null}
-                <Footer />
-            </div>
+            {Page}
         )
     }
 }
