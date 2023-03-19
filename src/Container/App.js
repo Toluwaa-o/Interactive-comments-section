@@ -17,6 +17,7 @@ class App extends Component {
         fetch('./data.json')
         .then(response => response.json())
         .then(res => {
+            console.log(res);
             this.setState({
                 comments: res.comments,
                 currentUser: res.currentUser
@@ -248,7 +249,7 @@ changeHandler = (event) => {
 }
 
     render() {
-        const Page = this.state.comments ? <div className='fullPage'>
+        const Page = this.state.comments !== null ? <div className='fullPage'>
         <Tweets change={this.changeHandler} delete={this.deleteReply} add={this.increaseScore} sub={this.decreaseScore} comments={this.state.comments} send={this.addReply} user={this.state.currentUser} />
         <ReplySection 
         avatar={this.state.currentUser ? this.state.currentUser.image.png : null}
@@ -269,7 +270,9 @@ changeHandler = (event) => {
         
 
         return (
-            {Page}
+            <div>
+                {Page}
+            </div>
         )
     }
 }
