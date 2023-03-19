@@ -1,0 +1,409 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0;
+  }
+  /*
+    3. Allow percentage-based heights in the application
+  */
+  html, body {
+    height: auto;
+  }
+  /*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /*
+    6. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    7. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /*
+    8. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    9. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
+
+body {
+    max-width: 100vw;
+    min-height: 100vh;
+    background: hsl(223, 19%, 93%);
+    font-family: 'Rubik', sans-serif;
+    position: relative;
+    padding: 1em;
+}
+
+.Controls {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    width: fit-content;
+    background: hsl(223, 19%, 93%);
+    padding: .4em .8em;
+    border-radius: 5px;
+    color: hsl(238, 40%, 52%);
+    font-weight: 500;
+}
+
+.Head {
+    display: flex;
+    display: flex;
+    gap: .6em;
+    align-items: center;
+    grid-area: 1/1/2/3;
+}
+
+body img {
+    width: 40px;
+}
+
+.Tweet, .Reply {
+    background: white;
+    padding: 1em;
+    border-radius: 7px;
+    margin-bottom: 1em;
+    display: grid;
+    gap: .7em;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: repeat(auto, 3);
+}
+
+.Content {
+    grid-area: 2/1/3/3;
+    color: hsl(211, 10%, 45%);
+    font-weight: 400;
+}
+
+.editArea {
+  grid-area: 2/1/3/3;
+}
+
+#editer {
+  width: 99%;
+  height: 10vh;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid hsla(211, 10%, 45%, 0.464);
+}
+
+.Replies {
+    display: grid;
+    grid-template-columns: 5% 95%;
+    margin-bottom: 1em;
+}
+
+.Line {
+    grid-area: 1/1;
+    width: 3px;
+    background: hsla(239, 58%, 85%, 0.825);
+}
+
+.right {
+    grid-area: 1/2;
+}
+
+.reply, .Delete, .Edit {
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    font-weight: 500;
+}
+
+.UserBtns {
+    display: flex;
+    gap: .8em;
+}
+
+.Tag, .Update {
+    background: hsl(238, 40%, 52%);
+    color: white;
+    font-size: .8em;
+    padding: .2em .3em;
+    cursor: pointer;
+    width: fit-content;
+    border: 1px solid hsl(238, 40%, 52%);
+}
+
+.Tag {
+    font-size: .9em;
+}
+
+.Time {
+    color: hsl(211, 10%, 45%);
+}
+
+.Username {
+    font-weight: 600;
+    color: hsl(212, 24%, 26%);
+}
+
+.Content span {
+    color: hsl(238, 40%, 52%);
+    font-weight: 500;
+}
+
+.Delete {
+    color: hsl(358, 79%, 66%);
+    cursor: pointer;
+}
+
+.reply, .Edit {
+    color: hsl(238, 40%, 52%);
+    cursor: pointer;
+}
+
+.TextArea {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto;
+    background: white;
+    padding: 1em;
+    gap: .6em;
+    margin-top: 1.5em;
+}
+
+.TextArea textarea {
+    grid-area: 1/1/2/3;
+    width: 99%;
+    height: 10vh;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid hsla(211, 10%, 45%, 0.464);
+}
+
+.Update {
+    padding-inline: 1.3em;
+    text-transform: uppercase;
+    justify-self: end;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(206, 47%, 3%, 0.431);
+}
+
+.confirmer {
+  max-width: 90%;
+  min-height: 200px;
+  position: fixed;
+  left: 50vw;
+  top: 50vh;
+  margin-left: -45%;
+  margin-top: -100px;
+  background: white;
+  padding: 1.5em;
+  border-radius: 7px;
+}
+
+.confirmer h2 {
+  font-size: 1.4em;
+  padding-bottom: .4em;
+  color: hsl(212, 24%, 26%);
+}
+
+.confirmer > p {
+  color: hsl(211, 10%, 45%);
+  font-weight: 500;
+  padding-bottom: .6em;
+  font-size: 1.1em;
+}
+
+.CBtns {
+  display: flex;
+  align-items: center;
+  gap: .7em;
+}
+
+.CBtns > p {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: white;
+  padding: .6em;
+  border-radius: 5px;
+  width: 48%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.No {
+  background: hsl(212, 24%, 26%);
+}
+
+.Yes {
+  background: hsl(358, 79%, 66%);
+}
+
+body textArea {
+  padding: .4em;
+}
+
+.Footer {
+  padding-top: 1em;
+  font-weight: 500;
+}
+
+.Footer a {
+  text-decoration: none;
+  color: hsl(238, 40%, 52%);
+}
+
+@media (min-width: 768px) {
+  * {
+    transition: all .3s ease;
+  }
+
+  .Footer {
+    font-weight: 600;
+  }
+
+  .Footer a:hover {
+    color: hsl(239, 68%, 69%);
+  }
+
+  .fullPage {
+    max-width: 50%;
+    margin: auto;
+  }
+
+  body img {
+    width: 50px;
+  }
+
+  .Content {
+    font-size: 1.14em;
+    grid-area: 2/2/3/4;
+  }
+
+  .Edit, .reply {
+    font-weight: 600;
+  }
+
+  .Edit:hover, .reply:hover {
+    color: hsl(239, 57%, 85%);
+  }
+
+  .editArea {
+    grid-area: 2/2/3/4;
+    display: flex;
+    flex-direction: column;
+    gap: .2em;
+    width: 100%;
+  }
+
+  .UserBtns {
+    grid-area: 1/3/2/4;
+  }
+
+  .editArea textArea {
+    width: 100%;
+    margin: 0;
+  }
+
+  .Update {
+    font-size: .9em;
+    padding: .7em 1.6em;
+    height: fit-content;
+    font-weight: 600;
+  }
+
+  .editArea button {
+    align-self: flex-end;
+    padding: .5em;
+  }
+
+  .Username {
+    font-size: 1.15em;
+    cursor: pointer;
+  }
+
+  .Time {
+    font-size: 1.1em;
+  }
+
+  .TextArea textArea:hover {
+    border: 1px solid black;
+  }
+
+  .Tweet, .Reply {
+    padding: 1.3em;
+    grid-template-columns: 7% auto auto;
+    grid-template-rows: auto auto;
+    gap: 1em;
+    height: fit-content;
+    position: relative;
+  }
+
+  .Controls {
+    grid-area: 1/1/3/2;
+    flex-direction: column;
+    justify-content: center;
+    height: 120px;
+  }
+
+  .Head {
+    grid-area: 1/2/2/3;
+  }
+
+  .TextArea {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.5em;
+  }
+
+  .Delete:hover {
+    color: hsl(357, 100%, 86%);
+  }
+
+  .Update:hover {
+    background: hsl(239, 57%, 85%);
+    border: 1px solid hsl(239, 57%, 85%);
+  }
+
+  .confirmer {
+    max-width: 26%;
+    min-height: 200px;
+    position: fixed;
+    left: 50vw;
+    top: 50vh;
+    margin-left: -13%;
+    margin-top: -100px;
+    background: white;
+    padding: 1.5em;
+    border-radius: 7px;
+  }
+}
